@@ -1,0 +1,17 @@
+12: Es esta la forma correcta de crear la categoría default, ¿no?
+
+¿El valor de stock de cada producto en una tienda, se debe sumar al stock del mismo producto de las demás tiendas para definir un stock global del producto?
+
+375: ¿Cómo hacer la implementación de imágenes para cada producto?
+-Igual una forma sería controlarlo mediante serialNumber, y poner ese serial como nombre en las imágenes: 
+for (carga=0;carga<3;carga++) {
+    imag[carga] = (carga + 1) + '.jpg';
+}
+ 
+for (i=0;i<3;i++) {
+    document.write('<img src="'+imag[i]+'">')
+    document.write("<br>")
+}
+
+
+Me queda hacer que: al borrar una categoría o una tienda, sus productos pasen a la de por defecto.

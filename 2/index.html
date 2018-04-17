@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Ejercicio 2</title>
+    <meta charset="utf-8">
+    <meta name="author" content="Daniel">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+<style>
+    *{
+        font-family:sans-serif;
+        font-size: 12px;
+        color: #e0e0e0;
+    }    
+
+    ul {
+        list-style-type: none;
+        margin: 0;
+        padding: 0;
+        overflow: hidden;
+        background-color: #333333;
+        width: 600px;
+        margin: auto;
+        border-bottom: 4px solid #3c7de3;
+        border-radius: 1px;
+    }
+
+    li {
+        float: left;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    li a {
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 18px;
+    }
+
+    li a:hover {
+        background-color: #3c7de3;
+    }
+    
+    img{
+        width: 10px;
+        height: 10px;
+        padding-right: 5px;
+        padding-left: 5px;
+    }
+    
+    #desp{
+        position: relative;
+        margin:auto;
+        width: 126px;
+        height: 100px;
+        background-color: #3c7de3;
+        right: 142px;
+        top:-4px;
+        display: flex;
+        justify-content: space-around;
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    .submenu{
+        display: block;
+        text-align: center;
+        text-decoration: none;
+        padding: 18px 42px;
+    }
+</style>
+</head>
+<body>
+
+<ul>
+  <li><a href=""></a></li>
+  <li><a href="" onmouseover="mostrarDiv()" onmouseout="ocultarDiv()"></a></li>
+  <li><a href=""></a></li>
+  <li><a href=""></a></li>
+</ul>
+<div onmouseover="mostrarDiv()" onmouseout="ocultarDiv()" id="desp">
+    <a class="submenu" href="" onmouseover="hoverSubmenu(this)" onmouseout="hoverSubmenu2(this)"></a>
+    <a class="submenu" href="" onmouseover="hoverSubmenu(this)" onmouseout="hoverSubmenu2(this)"></a>
+</div>
+
+<script>
+    document.getElementById("desp").style.visibility="hidden";
+    
+    var x=document.getElementsByTagName("a");
+    x[0].innerHTML="<img src='ico/home.png'> HOME";
+    x[1].innerHTML="<img src='ico/menu.png'> MENUS <img src='ico/flecha.png'>";
+    x[2].innerHTML="<img src='ico/settings.png'> SETTINGS";
+    x[3].innerHTML="<img src='ico/contact.png'> CONTACT";
+    x[4].innerHTML="Menu 1";
+    x[5].innerHTML="Menu 2";
+    
+    var y=document.getElementsByTagName("li");
+    
+    function changeClass(){
+     document.write("dg");
+    }
+
+    function mostrarDiv(){
+        document.getElementById("desp").style.visibility="visible";
+        x[1].style.backgroundColor="#3c7de3";
+    }
+    
+    function ocultarDiv(){
+        document.getElementById("desp").style.visibility="hidden";
+        x[1].style.backgroundColor="#333333";
+    }
+    
+    function hoverSubmenu(a){
+        a.style.backgroundColor="rgba(58, 108, 245, 0.47)";
+    }
+    
+    function hoverSubmenu2(a){
+        a.style.backgroundColor="#3c7de3";
+    }
+    
+</script>
+    
+    
+</body>
+</html>
