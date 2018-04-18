@@ -3,10 +3,10 @@ function StoreHouse(){
     
     if(!(this instanceof StoreHouse)) throw new InvalidAccessConstructorException();
     
-    var name=null;
-    var productos=[];
-    var categorias=[];
-    var tiendas=[];
+    nameSH=null;
+    productos=[];
+    categorias=[];
+    tiendas=[];
     
     //No estoy seguro de que sea la forma más adecuada de dejar creada la categoría default, en verdad
     categorias[0]=new Category("Default");
@@ -747,128 +747,3 @@ Shop.prototype.constructor=Shop;
 Shop.prototype.toString=function(){	
 	return "Shop: Name -> "+this.name; 
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-//Función de testeo
-function pruebas(){
-    console.log("Pruebas ERP:");
-    console.log("------------");
-    console.log("");
-    console.log("Nueva categoría:");
-    var c1=new Category("Categoría 1");
-    c1.description="Esta es la categoría 1.";
-    console.log(c1.toString());
-    console.log("Otra categoría:");
-    var c2=new Category("Categoría 2");
-    c2.description="Esta es la categoría 2.";
-    console.log(c1.toString());
-    console.log("Nuevo producto:");
-    var p1=new Product(1,"Zapas",50);
-    p1.description="Este es el producto 1.";
-    console.log(p1.toString());
-    console.log("Nueva tienda:");
-    var co1=new Coords(90, 68);
-    var t1=new Shop("Ollie",co1);
-    console.log(t1.toString()+" Coordenadas -> "+t1.coordenadas.latitude+" || "+t1.coordenadas.longitude);
-    console.log("------------");
-    console.log("------------");
-    console.log("Creando un objeto heredado (camiseta):");
-    var camiseta1=new Camiseta(1,"Etnies",30,"XXL");
-    console.log(camiseta1.toString());
-    console.log("Creando un objeto heredado (zapatillas):");
-    var zapatillas1=new Zapatillas(2,"DC",50,42);
-    console.log(zapatillas1.toString());
-    console.log("Creando un objeto heredado (gorro):");
-    var gorro1=new Gorro(3,"Lion",20,"XL");
-    console.log(gorro1.toString());
-    zapatillas1.stock=2;
-    console.log("------------");
-    console.log("------------");
-    console.log("Estas son las categorías almacenadas ->");
-    var sh1=new StoreHouse();
-    sh1.addCategory(c1);
-    sh1.addCategory(c2);
-    var categorias=sh1.categorias;
-    var categoria=categorias.next();
-    while (categoria.done!==true){
-		console.log ("Categoria-> "+categoria.value.title);
-		categoria=categorias.next();
-    }
-    console.log("Probamos a borrar la categoría 1.");
-    sh1.removeCategory(c1);
-    console.log("Y mostramos de nuevo las categorías ->");
-    var categorias=sh1.categorias;
-    var categoria=categorias.next();
-    while (categoria.done!==true){
-		console.log ("Categoria-> "+categoria.value.title);
-		categoria=categorias.next();
-    }
-    console.log("Introducimos un producto 'zapatillas' con una categoría asociada (en este caso la 2) ->");
-    sh1.addProduct(zapatillas1,c2);
-    console.log("Y comprobamos que se ha añadido correctamente ->")
-    console.log(c2.products[0]);
-    console.log("Probamos a borrar el producto 'zapatillas' añadido anteriormente ->");
-    sh1.removeProduct(zapatillas1);
-    console.log("Comprobamos que se ha borrado correctamente ->")
-    console.log(sh1.productos[0]);
-    sh1.addCategory(c1);
-    sh1.addProduct(gorro1,c1);
-    
-    console.log("Probamos a añadir una tienda ->");
-    sh1.addShop(t1);
-    console.log("Controlamos que se añade ->");
-    var tiendas=sh1.tiendas;
-    var tienda=tiendas.next();
-    while (tienda.done!==true){
-		console.log ("Tienda-> "+tienda.value.name);
-		tienda=tiendas.next();
-    }
-    console.log("Ahora probamos a eliminarla ->");
-    sh1.removeShop(t1);
-    var tiendas=sh1.tiendas;
-    var tienda=tiendas.next();
-    while (tienda.done!==true){
-		console.log ("Tienda-> "+tienda.value.name);
-		tienda=tiendas.next();
-    }
-    console.log("(No muestra nada el iterador.)");
-    sh1.addShop(t1);
-    console.log("Vemos qué categorías hay disponibles ->");
-    var categorias=sh1.categorias;
-    var categoria=categorias.next();
-    while (categoria.done!==true){
-		console.log ("Categoria-> "+categoria.value.title);
-		categoria=categorias.next();
-    }
-    console.log("Añadimos varios productos a una categoría antes de probar el getCategoryProducts -> ");
-    var gorro2=new Gorro(3,"Ekko",30,"XL");
-    gorro2.stock=4;
-    sh1.addProduct(gorro2,c2);
-    console.log("getCategoryProducts de la categoría 2 (por ejemplo) -> ");
-    sh1.getCategoryProducts(c2);
-    sh1.addProduct(gorro2,c2);
-    console.log("Probamos el addProductinShop.")
-    sh1.addProductInShop(gorro2,t1,5);
-    console.log("Y por último getShopProducts de la tienda 1 -> ");
-    sh1.getShopProducts(t1,"");
-    
-    
-}
-window.onload=pruebas;
