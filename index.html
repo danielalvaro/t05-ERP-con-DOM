@@ -28,7 +28,7 @@
             <div id="nav">
             </div>
             <div id="carrito">
-                    <span class="glyphicon glyphicon-shopping-cart"></span>
+                <span class="glyphicon glyphicon-shopping-cart"></span>
             </div>
         </div>
     </header>
@@ -37,18 +37,10 @@
             <span>Categorías</span>
         </div>
         <div id="prod">
-            <div>
-                
-            </div>
-            <div>
-                
-            </div>
-            <div>
-                
-            </div>
-            <div>
-                
-            </div>
+            <div id="col1"></div>
+            <div id="col2"></div>
+            <div id="col3"></div>
+            <div id="col4"></div>
         </div>
     </main>
     <footer>
@@ -63,7 +55,7 @@
             var almacen = new StoreHouse();
             almacen.nameSH = "almacen";
             var co1 = new Coords(90, 68);
-            
+
             //Tiendas:
             var t1 = new Shop("Tienda Norte", co1);
             almacen.addShop(t1);
@@ -73,7 +65,7 @@
             almacen.addShop(t3);
             var t4 = new Shop("Tienda Este", co1);
             almacen.addShop(t4);
-            
+
             //Categorías:
             var c1 = new Category("Camisetas");
             almacen.addCategory(c1);
@@ -83,131 +75,184 @@
             almacen.addCategory(c3);
             var c4 = new Category("Sudaderas");
             almacen.addCategory(c4);
-            var c5 = new Category("Accesorios");
-            almacen.addCategory(c5);
-            
+            var c0 = new Category("Todo");
+            almacen.addCategory(c0);
+
             //Productos:
-            
-            
-            
+            var p1 = new Product(1, "Camiseta negra", 25);
+            p1.images[0] = "../img/p1.png";
+            almacen.addProduct(p1, c1);
+            var p2 = new Product(2, "Camiseta blanca", 20);
+            p2.images[0] = "../img/p2.png";
+            almacen.addProduct(p2, c1);
+            var p3 = new Product(3, "Camiseta roja", 18);
+            p3.images[0] = "../img/p3.png";
+            almacen.addProduct(p3, c1);
+            var p4 = new Product(4, "Camiseta azul", 30);
+            p4.images[0] = "../img/p4.png";
+            almacen.addProduct(p4, c1);
+            var p5 = new Product(5, "Pantalón rojo", 40);
+            p5.images[0] = "../img/p5.png";
+            almacen.addProduct(p5, c1);
+            var p6 = new Product(6, "Pantalón azul", 30);
+            p6.images[0] = "../img/p6.png";
+            almacen.addProduct(p6, c1);
+            var p7 = new Product(7, "Pantalón negro", 40);
+            p7.images[0] = "../img/p7.png";
+            almacen.addProduct(p7, c1);
+            var p8 = new Product(8, "Zapatillas blancas", 30);
+            p8.images[0] = "../img/p8.png";
+            almacen.addProduct(p8, c1);
+            var p9 = new Product(9, "Zapatillas negras", 40);
+            p9.images[0] = "../img/p9.png";
+            almacen.addProduct(p9, c1);
+            var p10 = new Product(10, "Sudadera negra", 40);
+            p10.images[0] = "../img/p10.png";
+            almacen.addProduct(p10, c1);
+            var p11 = new Product(11, "Sudadera gris", 30);
+            p11.images[0] = "../img/p11.png";
+            almacen.addProduct(p11, c1);
+            var p12 = new Product(12, "Sudadera verde", 40);
+            p12.images[0] = "../img/p12.png";
+            almacen.addProduct(p12, c1);
+
             shopsMenusPopulate();
             menuCategoryShopPopulate();
-        }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function initPopulate(){
+            
+            
+            var i = 0;
+            do {
+
+                document.getElementById("col1").innerHTML += "<div>" + "<h3>" + productos[i].name + "</h3>" + "<img src='" + productos[i].images[0] + "' width=200px height=240px>" + "<h4>" + productos[i].price + " €</h4></div>";
+
+                i++;
+
+                document.getElementById("col2").innerHTML += "<div>" + "<h3>" + productos[i].name + "</h3>" + "<img src='" + productos[i].images[0] + "' width=200px height=240px>" + "<h4>" + productos[i].price + " €</h4></div>";
+
+                i++;
+
+                document.getElementById("col3").innerHTML += "<div>" + "<h3>" + productos[i].name + "</h3>" + "<img src='" + productos[i].images[0] + "' width=200px height=240px>" + "<h4>" + productos[i].price + " €</h4></div>";
+
+                i++;
+
+                document.getElementById("col4").innerHTML += "<div>" + "<h3>" + productos[i].name + "</h3>" + "<img src='" + productos[i].images[0] + "' width=200px height=240px>" + "<h4>" + productos[i].price + " €</h4></div>";
+
+                i++;
+                
+
+            } while (i < productos.length);
+
+
+
+
             
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function shopsMenusPopulate(){
+
+
+
+
+
+
+
+
+
+        function initPopulate() {
+
+        }
+
+
+
+
+
+
+
+
+
+        function shopsMenusPopulate() {
             for (var i = 0; i < tiendas.length; i++) {
                 document.getElementById("nav").innerHTML += "<a>" + tiendas[i].name + "</a>";
             }
-            console.log("hola");
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function shopPopulate(){
-            
+
+
+
+
+
+
+
+
+
+        function shopPopulate() {
+
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function menuCategoryShopPopulate(){
+
+
+
+
+
+
+
+
+
+        function menuCategoryShopPopulate() {
             for (var i = 0; i < categorias.length; i++) {
                 document.getElementById("cat").innerHTML += "<a>" + categorias[i].title + "</a>";
             }
         }
-        
-            
-            
-            
-            
-            
-            
 
-            
-        function productsCategoryShopPopulate(){
-            
+
+
+
+
+
+
+
+
+        function productsCategoryShopPopulate() {
+
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function productShopPopulate(){
-            
+
+
+
+
+
+
+
+
+
+        function productShopPopulate() {
+
         }
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function globalProductPopulate(){
-            
+
+
+
+
+
+
+
+
+
+        function globalProductPopulate() {
+
         }
-            
-            
-            
-            
-            
-            
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        
-        function ajustarCategorías(){
-            var porcentaje=0;
-            var ancho=1450-122;
-            
-            var resul=ancho
+
+
+
+
+
+
+
+
+
+        function ajustarCategorías() {
+            var porcentaje = 0;
+            var ancho = 1450 - 122;
+
+            var resul = ancho
             document.getElementById
         }
 
         window.onload = init();
-
     </script>
 </body>
 
