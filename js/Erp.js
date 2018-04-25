@@ -7,6 +7,7 @@ function StoreHouse(){
     productos=[];
     categorias=[];
     tiendas=[];
+    glo=null;
     
     //No estoy seguro de que sea la forma más adecuada de dejar creada la categoría default, en verdad
     categorias[0]=new Category("Default");
@@ -374,6 +375,7 @@ function Product(valorSerialNumber,valorName,valorPrice){
     var tax=null;
     var images=[];
     var stock=null;
+    var cat=null;
     
     Object.defineProperty(this,"serialNumber",{
 		get:function(){
@@ -403,6 +405,16 @@ function Product(valorSerialNumber,valorName,valorPrice){
 		set:function(value){
             if(value===undefined||valorName==="") throw new EmptyValueException("valorName");
 			description=value;
+		}		
+	});
+    
+    Object.defineProperty(this,"cat",{
+		get:function(){
+			return cat;
+		},
+		set:function(value){
+            if(value===undefined||valorName==="") throw new EmptyValueException("valorName");
+			cat=value;
 		}		
 	});
     
